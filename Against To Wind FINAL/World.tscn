@@ -1,0 +1,270 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://gfx/blackboard.jpg" type="Texture" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://gfx/Feltpen.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Untitled.png" type="Texture" id=6]
+[ext_resource path="res://blue_button11.png" type="Texture" id=7]
+[ext_resource path="res://blue_button12.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 32 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+outline_color = Color( 0.243137, 1, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_color = Color( 0.360784, 1, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 5 )
+
+[node name="World" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="Dusman" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 352, 176 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Dusman"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Dusman/Area2D"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dusman/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Dusman2" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 544, 176 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Dusman2"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Dusman2/Area2D"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dusman2/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Dusman3" type="KinematicBody2D" parent="."]
+position = Vector2( 736, 176 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Dusman3"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Dusman3/Area2D"]
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dusman3/Area2D"]
+shape = SubResource( 1 )
+
+[node name="teleport" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 351, 400 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport"]
+shape = SubResource( 2 )
+
+[node name="teleport2" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 544, 400 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport2"]
+shape = SubResource( 2 )
+
+[node name="LoseLabel" type="RichTextLabel" parent="."]
+margin_left = 288.0
+margin_top = 224.0
+margin_right = 736.0
+margin_bottom = 336.0
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[color=red]Game Over[/color]"
+text = "Game Over"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Finish" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 880, 288 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Finish"]
+modulate = Color( 0, 0.996078, 0.109804, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
+shape = SubResource( 4 )
+
+[node name="WinLabel" type="RichTextLabel" parent="."]
+margin_left = 304.0
+margin_top = 240.0
+margin_right = 768.0
+margin_bottom = 368.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[color=green]You Win[/color]"
+text = "You Win"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 813.0
+margin_top = 175.0
+margin_right = 941.0
+margin_bottom = 239.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.0313726, 0.992157, 0.0784314, 1 )
+text = "Finish"
+
+[node name="RestartGame" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="StartPosition" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 64, 288 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPosition"]
+shape = SubResource( 7 )
+
+[node name="Rain" type="CPUParticles2D" parent="."]
+position = Vector2( 528, 256 )
+amount = 80
+texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 250 )
+gravity = Vector2( -100, 100 )
+angle = -43.6
+scale_amount = 0.2
+
+[node name="InfoText" type="RichTextLabel" parent="."]
+margin_left = 96.0
+margin_top = 480.0
+margin_right = 1008.0
+margin_bottom = 576.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Press SpaceBar to move to the finish line!"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="InfoText5" type="RichTextLabel" parent="."]
+margin_left = 880.0
+margin_top = 416.0
+margin_right = 960.0
+margin_bottom = 480.0
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.792157, 0.00784314, 0.980392, 1 )
+text = "Go!"
+
+[node name="InfoText4" type="RichTextLabel" parent="."]
+margin_left = 416.0
+margin_top = 16.0
+margin_right = 752.0
+margin_bottom = 144.0
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0, 0.976471, 1, 1 )
+text = "Level 0"
+
+[node name="InfoText2" type="RichTextLabel" parent="."]
+margin_left = 128.0
+margin_top = 544.0
+margin_right = 1008.0
+margin_bottom = 640.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Do not touch red ones or you may fail!"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="InfoText3" type="RichTextLabel" parent="."]
+margin_left = 80.0
+margin_top = 432.0
+margin_right = 960.0
+margin_bottom = 528.0
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.231373, 0.996078, 0.0156863, 1 )
+text = "Push to Level Up!"
+
+[node name="FasterButton" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 432.0
+margin_right = 65.0
+margin_bottom = 481.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[node name="GoButton" type="TextureButton" parent="."]
+margin_left = 816.0
+margin_top = 416.0
+margin_right = 865.0
+margin_bottom = 465.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+[connection signal="area_entered" from="Dusman/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Dusman/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="Dusman2/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Dusman2/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="Dusman3/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Dusman3/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Finish" to="." method="_on_Finish_body_entered"]
+[connection signal="timeout" from="RestartGame" to="." method="_on_RestartGame_timeout"]
+[connection signal="pressed" from="FasterButton" to="." method="_on_FasterButton_pressed"]
+[connection signal="pressed" from="GoButton" to="Player" method="_on_GoButton_pressed"]
